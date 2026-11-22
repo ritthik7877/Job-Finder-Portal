@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobFinder - Find Your Dream Job</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <h2 class="logo">Job<span>Finder</span></h2>
+
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#jobs">Find Jobs</a>
+                <a href="#about">About</a>
+            </div>
+
+            <a href="#jobs" class="nav-btn">Explore Jobs</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="tagline">YOUR CAREER STARTS HERE</p>
+            <h1>Find a Job That <span>Matches Your Skills</span></h1>
+            <p class="hero-text">
+                Discover exciting career opportunities and take
+                the next step towards your professional future.
+            </p>
+
+            <a href="#jobs" class="primary-btn">Explore Opportunities</a>
+        </div>
+    </section>
+
+    <section class="search-section" id="jobs">
+        <h2>Find Your Perfect Job</h2>
+        <p>Search through available opportunities.</p>
+
+        <div class="search-box">
+            <input type="text" id="searchInput"
+                placeholder="Job title, company or skill">
+
+            <select id="locationFilter">
+                <option value="">All Locations</option>
+                <option value="Coimbatore">Coimbatore</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Remote">Remote</option>
+            </select>
+
+            <select id="categoryFilter">
+                <option value="">All Categories</option>
+                <option value="Development">Development</option>
+                <option value="Design">Design</option>
+                <option value="Data">Data Analytics</option>
+                <option value="Marketing">Marketing</option>
+            </select>
+
+            <button onclick="filterJobs()">Search</button>
+        </div>
+
+        <div class="job-heading">
+            <h2>Latest Job Opportunities</h2>
+            <span id="jobCount"></span>
+        </div>
+
+        <div class="job-container" id="jobContainer"></div>
+    </section>
+
+    <section class="about" id="about">
+        <h2>About JobFinder</h2>
+        <p>
+            JobFinder is a simple job search platform designed to
+            help candidates explore job opportunities based on
+            their skills, interests and preferred locations.
+        </p>
+    </section>
+
+    <footer>
+        <h3>JobFinder</h3>
+        <p>Connecting Talent With Opportunities.</p>
+        <p>© 2026 JobFinder. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Application Modal -->
+    <div class="modal" id="applyModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">×</button>
+
+            <h2>Apply for Job</h2>
+            <p id="selectedJob"></p>
+
+            <form id="applicationForm">
+                <input type="text" id="applicantName"
+                    placeholder="Your Full Name" required>
+
+                <input type="email" id="applicantEmail"
+                    placeholder="Your Email Address" required>
+
+                <button type="submit">Submit Application</button>
+            </form>
+
+            <p class="demo-note">
+                Demo application only. No information is sent to a server.
+            </p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
