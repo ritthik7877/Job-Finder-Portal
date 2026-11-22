@@ -40,11 +40,12 @@
         <h2>Find Your Perfect Job</h2>
         <p>Search through available opportunities.</p>
 
-        <div class="search-box">
+        <div class="search-box" role="search">
             <input type="text" id="searchInput"
-                placeholder="Job title, company or skill">
+                placeholder="Job title, company or skill"
+                aria-label="Search jobs">
 
-            <select id="locationFilter">
+            <select id="locationFilter" aria-label="Filter by location">
                 <option value="">All Locations</option>
                 <option value="Coimbatore">Coimbatore</option>
                 <option value="Chennai">Chennai</option>
@@ -52,7 +53,7 @@
                 <option value="Remote">Remote</option>
             </select>
 
-            <select id="categoryFilter">
+            <select id="categoryFilter" aria-label="Filter by category">
                 <option value="">All Categories</option>
                 <option value="Development">Development</option>
                 <option value="Design">Design</option>
@@ -60,7 +61,7 @@
                 <option value="Marketing">Marketing</option>
             </select>
 
-            <button onclick="filterJobs()">Search</button>
+            <button type="button" id="searchButton">Search</button>
         </div>
 
         <div class="job-heading">
@@ -87,11 +88,13 @@
     </footer>
 
     <!-- Application Modal -->
-    <div class="modal" id="applyModal">
+    <div class="modal" id="applyModal" role="dialog"
+        aria-modal="true" aria-labelledby="applyTitle">
         <div class="modal-content">
-            <button class="close-btn" onclick="closeModal()">×</button>
+            <button class="close-btn" type="button"
+                aria-label="Close application form">×</button>
 
-            <h2>Apply for Job</h2>
+            <h2 id="applyTitle">Apply for Job</h2>
             <p id="selectedJob"></p>
 
             <form id="applicationForm">

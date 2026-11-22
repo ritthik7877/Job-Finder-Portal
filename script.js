@@ -65,9 +65,16 @@ const jobs = [
 const jobContainer = document.getElementById("jobContainer");
 const jobCount = document.getElementById("jobCount");
 
-let savedJobs = JSON.parse(
-    localStorage.getItem("savedJobs") || "[]"
-);
+let savedJobs;
+
+try {
+    const storedJobs = JSON.parse(
+        localStorage.getItem("savedJobs") || "[]"
+    );
+    savedJobs = Array.isArray(storedJobs) ? storedJobs : [];
+} catch (error) {
+    savedJobs = [];
+}
 
 let selectedJob = null;
 
@@ -192,15 +199,16 @@ function openModal(job) {
     document.getElementById("selectedJob").textContent =
         `Position: ${job.title} at ${job.company}`;
 
-    document.getElementById("applyModal").style.display =
-        "flex";
+    const modal = document.getElementById("applyModal");
+    modal.classList.add("is-open");
+    document.body.classList.add("modal-open");
+    document.getElementById("applicantName").focus();
 }
 
 // Close application form
 function closeModal() {
-
-    document.getElementById("applyModal").style.display =
-        "none";
+    document.getElementById("applyModal").classList.remove("is-open");
+    document.body.classList.remove("modal-open");
 }
 
 // Handle application form
@@ -235,6 +243,26 @@ document.getElementById("locationFilter")
 
 document.getElementById("categoryFilter")
     .addEventListener("change", filterJobs);
+
+document.getElementById("searchButton")
+    .addEventListener("click", filterJobs);
+
+document.querySelector(".close-btn")
+    .addEventListener("click", closeModal);
+
+document.getElementById("applyModal")
+    .addEventListener("click", function(event) {
+        if (event.target === this) {
+            closeModal();
+        }
+    });
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape" &&
+        document.getElementById("applyModal").classList.contains("is-open")) {
+        closeModal();
+    }
+});
 
 // Initial display
 displayJobs(jobs);

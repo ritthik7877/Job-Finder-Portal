@@ -5,6 +5,10 @@
 > **Last updated:** 22/11/2026 (22 November 2026)  
 > **Status:** Static frontend demo — fully functional in the browser, no backend required.
 
+## Live deployment
+
+[Open the deployed Job Finder Portal](https://job-find-portal-lyyyypt20-ritthik-s-projects.vercel.app)
+
 ## Table of Contents
 
 | # | Section | Purpose |
